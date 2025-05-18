@@ -18,3 +18,19 @@ create table livro (
 
 select * from autor;
 select * from livro;
+
+
+/* 
+ Comentário --
+*/
+
+-- Begin iniciar transação
+-- begin;
+   -- código aqui
+-- end;
+
+-- Commitar transação no Banco
+-- commit;
+
+-- Rollback da transação no Banco
+-- rollback;

@@ -125,4 +125,14 @@ class LivroRepositoryTest {
         resultado.forEach(System.out::println);
     }
 
+    @Test
+    void deletePorGeneroTest() {
+        livroRepository.deleteByGenero(GeneroLivro.MISTERIO);
+    }
+
+    @Test
+    void updateDataAtualizacao() {
+        livroRepository.updateDataAtualizacao(LocalDate.of(2000, 5, 12));
+    }
+
 }
