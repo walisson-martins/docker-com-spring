@@ -2,6 +2,7 @@ package io.github.libraryapi.repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -74,4 +75,54 @@ class LivroRepositoryTest {
         System.out.println("Autor");
         System.out.println(livro.getAutor().getNome());
     }
+
+    @Test
+    void pesquisarPorTituloTest() {
+        List<Livro> lista = livroRepository.findByTitulo("UFO");
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisarPorTituloEPrecoTest() {
+        var preco = BigDecimal.valueOf(100);
+        List<Livro> lista = livroRepository.findByTituloAndPreco("UFO", preco);
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void listarLivrosComQuery() {
+        var resultado = livroRepository.litarTodosOrdenadoPorTituloEPreco();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarAutoresDosLivros() {
+        var resultado = livroRepository.listarAutoresDosLivros();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarTitulosDiferentes() {
+        var resultado = livroRepository.listarAutoresDosLivros();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarGenerosAutoresBrasileiros() {
+        var resultado = livroRepository.listarGenerosAutoresBrasileiros();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarPorGeneroQueryParam() {
+        var resultado = livroRepository.findByGenero(GeneroLivro.FICCAO, "dataPublicacao");
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarPorGeneroPositionalQueryParam() {
+        var resultado = livroRepository.findByGeneroPositionalParams(GeneroLivro.MISTERIO, "preco");
+        resultado.forEach(System.out::println);
+    }
+
 }
