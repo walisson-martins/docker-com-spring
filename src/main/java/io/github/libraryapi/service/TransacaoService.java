@@ -43,7 +43,7 @@ public class TransacaoService {
 
         livroRepository.saveAndFlush(livro);
 
-        if (autor.getNome().equals("x")) {
+        if (autor.getNome().equals("Jose")) {
             throw new RuntimeException("Rollback");
         }
 
