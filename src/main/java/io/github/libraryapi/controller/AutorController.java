@@ -25,6 +25,7 @@ import io.github.libraryapi.exceptions.OperacaoNaoPermitidaException;
 import io.github.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.libraryapi.model.Autor;
 import io.github.libraryapi.service.AutorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -36,7 +37,7 @@ public class AutorController {
     private final AutorService service;
 
     @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody AutorDTO autor) {
+    public ResponseEntity<Object> salvar(@Valid @RequestBody AutorDTO autor) {
 
         try {
             Autor autorEntidade = autor.mapearParaAutor();
@@ -106,7 +107,7 @@ public class AutorController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Object> atualizar(@PathVariable("id") String id, @RequestBody AutorDTO dto) {
+    public ResponseEntity<Object> atualizar(@PathVariable("id") String id, @RequestBody @Valid AutorDTO dto) {
 
         try {
             var idAutor = UUID.fromString(id);
