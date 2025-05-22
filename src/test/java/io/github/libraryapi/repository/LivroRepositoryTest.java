@@ -32,13 +32,13 @@ class LivroRepositoryTest {
         livro.setTitulo("UFO");
         livro.setData_publicacao(LocalDate.of(1989, 1, 2));
 
-        // Autor autor = autorRepository.findById(UUID.fromString("5a887349-c8df-4c33-854a-9f961295aae1"))
-        //         .orElse(null);
+        Autor autor = autorRepository.findById(UUID.fromString("05c900ea-d239-478f-b1a3-3c4f9a94c10a"))
+                .orElse(null);
         // livro.setAutor(autor);
-        Autor autor = new Autor();
-        autor.setNome("Maria Jose");
-        autor.setNacionalidade("Brasileira");
-        autor.setData_nascimento(LocalDate.of(1950, 1, 31));
+        // Autor autor = new Autor();
+        // autor.setNome("Maria Jose");
+        // autor.setNacionalidade("Brasileira");
+        // autor.setDataNascimento(LocalDate.of(1950, 1, 31));
         livro.setAutor(autor);
         livroRepository.save(livro);
     }
@@ -65,7 +65,8 @@ class LivroRepositoryTest {
     }
 
     @Test
-    @Transactional //trazer apenas aquilo que preciso transacional Select Apenas no que eu instancio
+    @Transactional // trazer apenas aquilo que preciso transacional Select Apenas no que eu
+                   // instancio
     void BuscarLivroTest() {
         UUID id = UUID.fromString("6571b227-e788-4c99-bcd3-38819657e83a");
         Livro livro = livroRepository.findById(id).orElse(null);

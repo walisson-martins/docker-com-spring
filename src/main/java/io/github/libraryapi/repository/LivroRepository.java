@@ -19,7 +19,7 @@ import io.github.libraryapi.model.Livro;
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, UUID> {
 
-    //Query Method
+    // Query Method
     List<Livro> findByAutor(Autor autor);
 
     List<Livro> findByTitulo(String titulo);
@@ -62,4 +62,6 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
     @Transactional
     @Query("update Livro set data_publicacao = ?1")
     void updateDataAtualizacao(LocalDate novaData);
+
+    boolean existsByAutor(Autor autor);
 }

@@ -10,7 +10,7 @@ public record AutorDTO(UUID id, String nome, LocalDate dataNascimento, String na
     public Autor mapearParaAutor() {
         Autor autor = new Autor();
         autor.setNome(this.nome);
-        autor.setData_nascimento(this.dataNascimento);
+        autor.setDataNascimento(this.dataNascimento);
         autor.setNacionalidade(this.nacionalidade);
         return autor;
     }
