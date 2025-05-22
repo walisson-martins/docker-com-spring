@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import io.github.libraryapi.dto.ErroCampo;
 import io.github.libraryapi.dto.ErroResposta;
+import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice
+@Slf4j
 public class CommomExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ErroResposta handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.error("Erro de validação", e.getMessage());
         List<FieldError> fieldError = e.getFieldErrors();
 
         List<ErroCampo> listaErroCampos = fieldError.stream()

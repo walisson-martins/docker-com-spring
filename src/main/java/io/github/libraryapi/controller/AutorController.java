@@ -23,28 +23,34 @@ import io.github.libraryapi.dto.AutorDTO;
 import io.github.libraryapi.dto.ErroResposta;
 import io.github.libraryapi.exceptions.OperacaoNaoPermitidaException;
 import io.github.libraryapi.exceptions.RegistroDuplicadoException;
+import io.github.libraryapi.mappers.AutorMapper;
 import io.github.libraryapi.model.Autor;
 import io.github.libraryapi.service.AutorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("autores")
 @RequiredArgsConstructor
+@Slf4j
 public class AutorController {
 
     @Autowired
     private final AutorService service;
 
-    @PostMapping
-    public ResponseEntity<Object> salvar(@Valid @RequestBody AutorDTO autor) {
+    @Autowired
+    private final AutorMapper mapper;
 
+    @PostMapping
+    public ResponseEntity<Object> salvar(@Valid @RequestBody AutorDTO dto) {
+        log.info("Cadastrando novo autor: {}", dto.nome());
         try {
-            Autor autorEntidade = autor.mapearParaAutor();
-            service.salvar(autorEntidade);
+            Autor autor = mapper.toEntity(dto);
+            service.salvar(autor);
 
             URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{id}").buildAndExpand(autorEntidade.getId()).toUri();
+                    .path("/{id}").buildAndExpand(autor.getId()).toUri();
 
             return ResponseEntity.created(location).build();
         } catch (RegistroDuplicadoException e) {
@@ -55,26 +61,20 @@ public class AutorController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<AutorDTO> obterAutor(@PathVariable("id") String id) {
+    public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id) {
 
         var idAutor = UUID.fromString(id);
-        Optional<Autor> autorOptional = service.obterPorId(idAutor);
 
-        if (autorOptional.isPresent()) {
-            Autor autor = autorOptional.get();
-            AutorDTO dto = new AutorDTO(autor.getId(), autor.getNome(), autor.getDataNascimento(),
-                    autor.getNacionalidade());
-
+        return service.obterPorId(idAutor).map(autor -> {
+            AutorDTO dto = mapper.toDTO(autor);
             return ResponseEntity.ok(dto);
-        }
-
-        return ResponseEntity.notFound().build();
+        }).orElseGet( () -> ResponseEntity.notFound().build());
 
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Object> deletar(@PathVariable("id") String id) {
-
+        log.info("Deletando autor de ID{}", id);
         try {
 
             var idAutor = UUID.fromString(id);
