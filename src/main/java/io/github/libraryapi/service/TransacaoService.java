@@ -37,7 +37,7 @@ public class TransacaoService {
         livro.setPreco(BigDecimal.valueOf(400));
         livro.setGenero(GeneroLivro.MISTERIO);
         livro.setTitulo("Vanessa Livro");
-        livro.setData_publicacao(LocalDate.of(2020, 2, 2));
+        livro.setDataPublicacao(LocalDate.of(2020, 2, 2));
 
         livro.setAutor(autor);
 
@@ -53,7 +53,7 @@ public class TransacaoService {
     public void updateSemQuery() {
         var livro = livroRepository.findById(UUID.fromString("ed4a3c95-7689-42fa-a0e1-d2cb941c2a2c")).orElse(null);
 
-        livro.setData_publicacao(LocalDate.of(2004, 6, 1));
+        livro.setDataPublicacao(LocalDate.of(2004, 6, 1));
 
     }
 }

@@ -26,7 +26,7 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
 
     List<Livro> findByTituloAndPreco(String titulo, BigDecimal preco);
 
-    // List<Livro> findByData_PublicacaoBetween(LocalDate inicio, LocalDate fim);
+    // List<Livro> findByDataPublicacaoBetween(LocalDate inicio, LocalDate fim);
     @Query("select l from Livro as l order by l.titulo, l.preco")
     List<Livro> litarTodosOrdenadoPorTituloEPreco();
 
@@ -60,7 +60,7 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
 
     @Modifying
     @Transactional
-    @Query("update Livro set data_publicacao = ?1")
+    @Query("update Livro set dataPublicacao = ?1")
     void updateDataAtualizacao(LocalDate novaData);
 
     boolean existsByAutor(Autor autor);
