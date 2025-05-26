@@ -42,6 +42,13 @@ public class CommomExceptionHandler {
         return ErroResposta.conflito(e.getMessage());
     }
 
+    @ExceptionHandler(CampoInvalidoException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public ErroResposta handleCampoInvalido(CampoInvalidoException e) {
+        return new ErroResposta(HttpStatus.UNPROCESSABLE_ENTITY.value(),
+                "Erro de validação", List.of(new ErroCampo(e.getCampo(), e.getMessage())));
+    }
+
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErroResposta handleErrosNaoTratados(RuntimeException e) {

@@ -1,22 +1,23 @@
 package io.github.libraryapi.service;
 
-import java.util.List;
+import static io.github.libraryapi.repository.specs.LivroSpecs.anoPublicacaoEqual;
+import static io.github.libraryapi.repository.specs.LivroSpecs.generoEqual;
+import static io.github.libraryapi.repository.specs.LivroSpecs.isbnEqual;
+import static io.github.libraryapi.repository.specs.LivroSpecs.nomeAutorLike;
+import static io.github.libraryapi.repository.specs.LivroSpecs.tituloLike;
+
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import io.github.libraryapi.enums.GeneroLivro;
 import io.github.libraryapi.model.Livro;
 import io.github.libraryapi.repository.LivroRepository;
-import io.github.libraryapi.repository.specs.LivroSpecs;
-import static io.github.libraryapi.repository.specs.LivroSpecs.anoPublicacaoEqual;
-import static io.github.libraryapi.repository.specs.LivroSpecs.generoEqual;
-import static io.github.libraryapi.repository.specs.LivroSpecs.isbnEqual;
-import static io.github.libraryapi.repository.specs.LivroSpecs.nomeAutorLike;
-import static io.github.libraryapi.repository.specs.LivroSpecs.tituloLike;
 import io.github.libraryapi.validator.LivroValidator;
 import lombok.RequiredArgsConstructor;
 
@@ -44,9 +45,9 @@ public class LivroService {
         repository.delete(livro);
     }
 
-    public List<Livro> pesquisa(
+    public Page<Livro> pesquisa(
             String isbn, String titulo, String nomeAutor,
-            GeneroLivro genero, Integer anoPublicacao) {
+            GeneroLivro genero, Integer anoPublicacao, Integer pagina, Integer tamanhoPagina) {
         Specification<Livro> specs = Specification.where((root, query, cb) -> cb.conjunction());
 
         if (isbn != null) {
@@ -69,7 +70,9 @@ public class LivroService {
             specs = specs.and(nomeAutorLike(nomeAutor));
         }
 
-        return repository.findAll(LivroSpecs.isbnEqual(isbn));
+        PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina);
+
+        return repository.findAll(specs, pageRequest);
 
     }
 

@@ -35,7 +35,6 @@ public class AutorController implements GenericController {
     @Autowired
     private final AutorService service;
 
-    @Autowired
     private final AutorMapper mapper;
 
     @PostMapping

@@ -10,7 +10,7 @@ import io.github.libraryapi.model.Autor;
 public interface AutorMapper {
 
     @Mapping(target = "nome", source = "nome")
-    @Mapping(target = "dataNascimento", source = "dataNascimento")
+    @Mapping(target = "dataNascimento", source = "dataNascimento", dateFormat = "yyyy-MM-dd")
     @Mapping(target = "nacionalidade", source = "nacionalidade")
     Autor toEntity(AutorDTO dto);
 
