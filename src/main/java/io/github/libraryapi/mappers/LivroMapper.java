@@ -9,7 +9,7 @@ import io.github.libraryapi.dto.ResultadoPesquisaLivroDTO;
 import io.github.libraryapi.model.Livro;
 import io.github.libraryapi.repository.AutorRepository;
 
-@Mapper(componentModel = "spring", uses= AutorMapper.class)
+@Mapper(componentModel = "spring", uses = AutorMapper.class)
 public abstract class LivroMapper {
 
     @Autowired

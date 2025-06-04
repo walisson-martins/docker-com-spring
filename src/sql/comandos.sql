@@ -22,8 +22,16 @@ create table livro (
 	constraint chk_genero check (genero in ('FICCAO', 'FANTASIA', 'MISTERIO', 'ROMANCE', 'BIOGRAFIA', 'CIENCIA'))
 );
 
-select * from autor;
-select * from livro;
+Select  * from livro
+Select  * from autor
+Select * from usuario
+
+create table usuario(
+	id uuid not null primary key,
+	login varchar(20) not null unique,
+	senha varchar(300) not null, 
+	roles varchar[]
+);
 
 /* 
  Comentário --
