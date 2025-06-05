@@ -275,3 +275,65 @@
 2025-06-04T20:50:30.425-03:00  INFO 12780 --- [libraryapi] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
 2025-06-04T20:50:33.180-03:00  INFO 12780 --- [libraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-06-04T20:51:29.881-03:00  INFO 12780 --- [libraryapi] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-04T20:54:31.251-03:00  INFO 31328 --- [libraryapi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04T20:54:31.495-03:00  INFO 31328 --- [libraryapi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 209 ms. Found 3 JPA repository interfaces.
+2025-06-04T20:54:35.744-03:00  INFO 31328 --- [libraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-06-04T20:54:35.776-03:00  INFO 31328 --- [libraryapi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-04T20:54:35.776-03:00  INFO 31328 --- [libraryapi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-06-04T20:54:35.959-03:00  INFO 31328 --- [libraryapi] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-04T20:54:35.960-03:00  INFO 31328 --- [libraryapi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9645 ms
+2025-06-04T20:54:36.576-03:00  WARN 31328 --- [libraryapi] [main] com.zaxxer.hikari.HikariConfig           : Library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-06-04T20:54:36.590-03:00  INFO 31328 --- [libraryapi] [main] com.zaxxer.hikari.HikariDataSource       : Library-db-pool - Starting...
+2025-06-04T20:54:37.367-03:00  INFO 31328 --- [libraryapi] [main] com.zaxxer.hikari.pool.HikariPool        : Library-db-pool - Added connection org.postgresql.jdbc.PgConnection@362a6aa5
+2025-06-04T20:54:37.376-03:00  INFO 31328 --- [libraryapi] [main] com.zaxxer.hikari.HikariDataSource       : Library-db-pool - Start completed.
+2025-06-04T20:54:37.913-03:00  INFO 31328 --- [libraryapi] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04T20:54:38.162-03:00  INFO 31328 --- [libraryapi] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-06-04T20:54:38.375-03:00  INFO 31328 --- [libraryapi] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-04T20:54:39.188-03:00  INFO 31328 --- [libraryapi] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (Library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 16.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04T20:54:39.894-03:00  INFO 31328 --- [libraryapi] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04T20:54:42.201-03:00  INFO 31328 --- [libraryapi] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04T20:54:42.488-03:00  INFO 31328 --- [libraryapi] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04T20:54:43.803-03:00  INFO 31328 --- [libraryapi] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-04T20:54:48.272-03:00  WARN 31328 --- [libraryapi] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04T20:54:48.428-03:00  INFO 31328 --- [libraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-06-04T20:54:49.741-03:00  INFO 31328 --- [libraryapi] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-06-04T20:54:51.168-03:00  INFO 31328 --- [libraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-06-04T20:55:06.585-03:00  INFO 31328 --- [libraryapi] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-04T21:08:55.641-03:00  INFO 14500 --- [libraryapi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04T21:08:55.761-03:00  INFO 14500 --- [libraryapi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 103 ms. Found 3 JPA repository interfaces.
+2025-06-04T21:08:57.288-03:00  INFO 14500 --- [libraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-06-04T21:08:57.316-03:00  INFO 14500 --- [libraryapi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-04T21:08:57.317-03:00  INFO 14500 --- [libraryapi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-06-04T21:08:57.524-03:00  INFO 14500 --- [libraryapi] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-04T21:08:57.525-03:00  INFO 14500 --- [libraryapi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4251 ms
+2025-06-04T21:08:57.869-03:00  WARN 14500 --- [libraryapi] [main] com.zaxxer.hikari.HikariConfig           : Library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-06-04T21:08:57.879-03:00  INFO 14500 --- [libraryapi] [main] com.zaxxer.hikari.HikariDataSource       : Library-db-pool - Starting...
+2025-06-04T21:08:58.262-03:00  INFO 14500 --- [libraryapi] [main] com.zaxxer.hikari.pool.HikariPool        : Library-db-pool - Added connection org.postgresql.jdbc.PgConnection@42b4df5a
+2025-06-04T21:08:58.265-03:00  INFO 14500 --- [libraryapi] [main] com.zaxxer.hikari.HikariDataSource       : Library-db-pool - Start completed.
+2025-06-04T21:08:58.518-03:00  INFO 14500 --- [libraryapi] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04T21:08:58.635-03:00  INFO 14500 --- [libraryapi] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-06-04T21:08:58.703-03:00  INFO 14500 --- [libraryapi] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-04T21:08:59.009-03:00  INFO 14500 --- [libraryapi] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (Library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 16.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04T21:08:59.295-03:00  INFO 14500 --- [libraryapi] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04T21:09:00.889-03:00  INFO 14500 --- [libraryapi] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04T21:09:01.097-03:00  INFO 14500 --- [libraryapi] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04T21:09:01.666-03:00  INFO 14500 --- [libraryapi] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-04T21:09:02.809-03:00  WARN 14500 --- [libraryapi] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04T21:09:02.881-03:00  INFO 14500 --- [libraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-06-04T21:09:03.440-03:00  INFO 14500 --- [libraryapi] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-06-04T21:09:04.552-03:00  INFO 14500 --- [libraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-06-04T21:09:27.808-03:00  INFO 14500 --- [libraryapi] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'

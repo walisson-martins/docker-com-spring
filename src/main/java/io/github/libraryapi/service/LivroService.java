@@ -1,11 +1,5 @@
 package io.github.libraryapi.service;
 
-import static io.github.libraryapi.repository.specs.LivroSpecs.anoPublicacaoEqual;
-import static io.github.libraryapi.repository.specs.LivroSpecs.generoEqual;
-import static io.github.libraryapi.repository.specs.LivroSpecs.isbnEqual;
-import static io.github.libraryapi.repository.specs.LivroSpecs.nomeAutorLike;
-import static io.github.libraryapi.repository.specs.LivroSpecs.tituloLike;
-
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,7 +11,14 @@ import org.springframework.stereotype.Service;
 
 import io.github.libraryapi.enums.GeneroLivro;
 import io.github.libraryapi.model.Livro;
+import io.github.libraryapi.model.Usuario;
 import io.github.libraryapi.repository.LivroRepository;
+import static io.github.libraryapi.repository.specs.LivroSpecs.anoPublicacaoEqual;
+import static io.github.libraryapi.repository.specs.LivroSpecs.generoEqual;
+import static io.github.libraryapi.repository.specs.LivroSpecs.isbnEqual;
+import static io.github.libraryapi.repository.specs.LivroSpecs.nomeAutorLike;
+import static io.github.libraryapi.repository.specs.LivroSpecs.tituloLike;
+import io.github.libraryapi.security.SecurityService;
 import io.github.libraryapi.validator.LivroValidator;
 import lombok.RequiredArgsConstructor;
 
@@ -31,8 +32,13 @@ public class LivroService {
     @Autowired
     private final LivroValidator livroValidator;
 
+    @Autowired
+    private final SecurityService securityService;
+
     public Livro salvar(Livro livro) {
         livroValidator.validar(livro);
+        Usuario usuario = securityService.obterUsuarioLogado();
+        livro.setUsuario(usuario);
         return repository.save(livro);
     }
 

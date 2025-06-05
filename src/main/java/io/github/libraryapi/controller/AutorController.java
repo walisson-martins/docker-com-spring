@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.github.libraryapi.dto.AutorDTO;
 import io.github.libraryapi.mappers.AutorMapper;
 import io.github.libraryapi.model.Autor;
+import io.github.libraryapi.security.SecurityService;
 import io.github.libraryapi.service.AutorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,19 +36,18 @@ public class AutorController implements GenericController {
 
     @Autowired
     private final AutorService service;
-
+    private final SecurityService securityService;
     private final AutorMapper mapper;
 
     @PostMapping
     @PreAuthorize("hasRole('GERENTE')")
     public ResponseEntity<Void> salvar(@Valid @RequestBody AutorDTO dto) {
+
         log.info("Cadastrando novo autor: {}", dto.nome());
 
         Autor autor = mapper.toEntity(dto);
         service.salvar(autor);
-
         URI location = gerarHeaderLocation(autor.getId());
-
         return ResponseEntity.created(location).build();
 
     }
